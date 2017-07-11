@@ -5,20 +5,15 @@ import service.ClassService;
 public class AClassServiceImpl implements ClassService{
 	
 	String[] className;
-	String strSeperator = ".";
+	String strSeperator = "\\.";
 
 	public AClassServiceImpl() {
-		this.className = this.getClass().getName().split("\\.");
+		this.className = this.getClass().getName().split(strSeperator);
 	}
 	
 	@Override
 	public String className() {
 		return this.getClass().getName();
-	}
-
-	@Override
-	public void setSeperator(String seperator) {
-		this.strSeperator = seperator;
 	}
 
 	@Override
@@ -32,7 +27,7 @@ public class AClassServiceImpl implements ClassService{
 		for(String nm : className) {
 			if(className.length > 2)
 				if(nameIdx != 0 && nameIdx != className.length-1) {
-					System.out.print(" " + nm);
+					System.out.print(" " + nm + " ");
 				}
 			
 			nameIdx++;
@@ -42,5 +37,11 @@ public class AClassServiceImpl implements ClassService{
 	@Override
 	public void getLastname() {
 		System.out.print(className[className.length-1]);
+	}
+
+	@Override
+	public void setSeperator(String strSeperator) {
+		this.strSeperator = strSeperator;
+		
 	}
 }
